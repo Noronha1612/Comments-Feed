@@ -8,7 +8,9 @@
   align-items: center;
 
   border-radius: 0.5rem;
+}
 
+.border {
   background-color: var(--gray-800);
   border: 2px solid var(--green-500);
   

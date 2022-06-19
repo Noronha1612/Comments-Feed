@@ -1,5 +1,6 @@
 import { Avatar } from '../Avatar';
 import { CommentForm } from './components/CommentForm';
+import { Comments } from './components/Comments';
 import styles from './styles.module.css';
 
 export const Post = () => {
@@ -16,7 +17,7 @@ export const Post = () => {
         <span>Publicado há 1h</span>
       </header>
 
-      <div className={styles.content}>
+      <p className={styles.content}>
         Fala galeraa 👋
         <br />
         <br />
@@ -27,11 +28,13 @@ export const Post = () => {
         👉 <a href="">jane.design/doctorcare</a>
         <br />
         <br /> <span>#novoprojeto #nlw #rocketseat</span>
-      </div>
+      </p>
 
-      <div className={styles.divider} />
+      <footer>
+        <CommentForm />
 
-      <CommentForm />
+        <Comments />
+      </footer>
     </section>
   );
 };
