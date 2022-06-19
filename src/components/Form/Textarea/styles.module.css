@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+}
+
+.container > span {
+  display: block;
+  color: var(--red-500);
+  font-weight: bold;
+  font-size: 0.875rem;
+  margin: 0.25rem;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  max-height: 192px;
+
+  padding: 0.75rem 1rem;
+
+  background: var(--gray-900);
+  border-radius: 8px;
+  border: none;
+
+  color: var(--gray-300);
+
+  resize: vertical;
+}
+
+.textarea:focus:not(.error),
+.textarea:active:not(.error) {
+  outline: 2px solid var(--green-500);
+}
+
+.error {
+  outline: 2px solid var(--red-500);
+}
