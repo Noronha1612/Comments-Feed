@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 0;
+  background: var(--gray-800);
+}
+
+.container img {
+  height: 2rem;
+}
