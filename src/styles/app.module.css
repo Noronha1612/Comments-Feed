@@ -9,3 +9,9 @@
   margin: 2rem auto;
   padding: 0 1rem;
 }
+
+.wrapper main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

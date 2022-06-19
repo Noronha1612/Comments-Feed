@@ -5,7 +5,11 @@ import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { Post } from './components/Post';
 
+import { usePosts } from './hooks/usePosts';
+
 function App() {
+  const { posts } = usePosts();
+
   return (
     <div>
       <Header />
@@ -14,7 +18,9 @@ function App() {
         <Sidebar />
 
         <main>
-          <Post />
+          {posts.map((post) => (
+            <Post key={post.id} post={post} />
+          ))}
         </main>
       </div>
     </div>
