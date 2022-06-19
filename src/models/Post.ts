@@ -5,6 +5,7 @@ export type PostResponse = {
   author: string; // UserId
   content: string;
   comments?: {
+    id: string;
     author: string; // UserId
     content: string;
     likes: number;
@@ -22,6 +23,7 @@ export type Post = {
 }
 
 export type Comment = {
+  id: string;
   author: User;
   content: string;
   likes: number;
