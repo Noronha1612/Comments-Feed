@@ -1,9 +1,14 @@
+import { usePosts } from '../../hooks/usePosts';
 import { Avatar } from '../Avatar';
 import { CommentForm } from './components/CommentForm';
 import { Comments } from './components/Comments';
 import styles from './styles.module.css';
 
 export const Post = () => {
+  const { posts } = usePosts();
+
+  console.log(posts);
+
   return (
     <section className={styles.postContainer}>
       <header className={styles.header}>

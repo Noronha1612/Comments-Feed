@@ -35,5 +35,33 @@
       "avatarUrl":
         "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=40"
     }
+  ],
+  "posts": [
+    {
+      "id": "824fb9c6ff5628757d78433f9cadfb56bdb344f92cbbec105acf580364f99990",
+      "author": "2aef892465da3297a795600b356c4c64e2a30de78914a1bfcc651b023e2b53d3",
+      "content": "Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀 👉 jane.design/doctorcare #novoprojeto #nlw #rocketseat",
+      "createdAt": "2022-06-19T21:06:09.614Z",
+      "comments": [
+        {
+          "author": "174f7258d98cfda7f525a5bcaf9dbb9316b28f0dbdf38a61ea8ef1e33d6983a8",
+          "content": "Muito bom Devon, parabéns!! 👏👏",
+          "createdAt": "2022-06-19T21:08:09.614Z",
+          "likes": 3
+        },
+        {
+          "author": "80eaac2c7ecd62d2efb97b9e871c8cc30bb3810f76fda287cd278faae53768e7",
+          "content": "Adorei seu novo portifa Devon!",
+          "createdAt": "2022-06-19T21:09:18.614Z",
+          "likes": 35
+        }
+      ]
+    },
+    {
+      "id": "4b56f7e0fc7cb1b2258dc286d6d0941343c92fe738d7429a32da205611eded41",
+      "author": "2aef892465da3297a795600b356c4c64e2a30de78914a1bfcc651b023e2b53d3",
+      "content": "Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀 👉 jane.design/doctorcare #novoprojeto #nlw #rocketseat",
+      "createdAt": "2022-06-19T21:12:22.418Z"
+    }
   ]
 }
