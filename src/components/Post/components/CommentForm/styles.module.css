@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container h4 {
+  font-weight: 700;
+  color: var(--gray-100);
+  line-height: 1.625rem;
+}
+
+.container button {
+  width: fit-content;
+}
