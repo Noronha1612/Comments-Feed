@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "name": "John Lens",
+      "id": "2aef892465da3297a795600b356c4c64e2a30de78914a1bfcc651b023e2b53d3",
+      "role": "Web Developer",
+      "avatarUrl":
+        "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=40"
+    },
+    {
+      "name": "Amanda Katrin",
+      "id": "174f7258d98cfda7f525a5bcaf9dbb9316b28f0dbdf38a61ea8ef1e33d6983a8",
+      "role": "Java Developer",
+      "avatarUrl":
+        "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=40"
+    },
+    {
+      "name": "Bill Vally",
+      "id": "2b3b84040afe4f51a0342a5860f61180a9ef39eb2cc1c7ec1f5c3a4107f95524",
+      "role": "Designer",
+      "avatarUrl":
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=40"
+    },
+    {
+      "name": "Philipp John",
+      "id": "56e7eff26e4c95cd2491f622ff4fda79003eb949911ab81c6d188e8c8dd939d7",
+      "role": "Product Manager",
+      "avatarUrl":
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=40"
+    },
+    {
+      "name": "Bessie Cooper",
+      "id": "80eaac2c7ecd62d2efb97b9e871c8cc30bb3810f76fda287cd278faae53768e7",
+      "role": "Analyst",
+      "avatarUrl":
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=40"
+    }
+  ]
+}
