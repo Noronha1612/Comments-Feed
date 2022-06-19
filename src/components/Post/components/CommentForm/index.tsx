@@ -5,23 +5,42 @@ import { Button } from '../../../Form/Button';
 import { Textarea } from '../../../Form/Textarea';
 import styles from './styles.module.css';
 import { Schema } from './validator';
+import { usePosts } from '../../../../hooks/usePosts';
+import { useAuth } from '../../../../hooks/useAuth';
+import { Post } from '../../../../models/Post';
+
+type CommentFormProps = {
+  post: Post;
+}
 
 type FormData = {
   comment: string;
 };
 
-export const CommentForm = () => {
+export const CommentForm: React.FC<CommentFormProps> = ({ post }) => {
+  const { comment } = usePosts();
+  const { user } = useAuth();
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
-    mode: 'onChange',
+    mode: 'onBlur',
     resolver: yupResolver(Schema),
   });
 
-  const handleAddComment = (data: FormData) => {
-    console.log(data);
+  const handleAddComment = async (data: FormData) => {
+    if(!user) return;
+
+    await comment({
+      user,
+      post,
+      comment: data.comment,
+    });
+
+    reset();
   };
 
   return (

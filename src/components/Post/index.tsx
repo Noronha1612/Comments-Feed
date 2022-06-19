@@ -27,9 +27,9 @@ export const Post: React.FC<PostProps> = ({ post }) => {
       </p>
 
       <footer>
-        <CommentForm />
+        <CommentForm post={post} />
 
-        <Comments comments={post.comments} />
+        <Comments post={post} comments={post.comments} />
       </footer>
     </section>
   );

@@ -1,16 +1,25 @@
 import { nanoid } from 'nanoid';
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Comment, Post, PostResponse } from '../models/Post';
 import { User } from '../models/User';
 import { api } from '../services/api';
 import { useUsers } from './useUsers';
 
+type CommentParams = {
+  post: Post;
+  user: User;
+  comment: string;
+};
+
 type PostsContextProps = {
-  comment: (data: {
-    post: Post;
-    userId: string;
-    comment: string;
-  }) => Promise<void>;
+  comment: (data: CommentParams) => Promise<void>;
+  deleteComment: (post: Post, commentId: string) => Promise<void>;
   posts: Post[];
 };
 
@@ -30,11 +39,7 @@ const getPosts = async () => {
   return response.data;
 };
 
-const postComment = async (data: {
-  post: Post;
-  userId: string;
-  comment: string;
-}) => {
+const postComment = async (data: CommentParams) => {
   const previousComments =
     data.post?.comments.map((comment) => ({
       ...comment,
@@ -51,7 +56,7 @@ const postComment = async (data: {
     comments: [
       ...previousComments,
       {
-        author: data.userId,
+        author: data.user.id,
         content: data.comment,
         createdAt: new Date().toString(),
         likes: 0,
@@ -60,7 +65,37 @@ const postComment = async (data: {
     ],
   };
 
-  const response = await api.patch(`posts/${data.post.id}`, newPost);
+  const response = await api.patch<PostResponse>(
+    `posts/${data.post.id}`,
+    newPost,
+  );
+
+  return response.data;
+};
+
+const deleteComment = async (post: Post, commentId: string) => {
+  const previousComments =
+    post?.comments.map((comment) => ({
+      ...comment,
+      author: comment.author.id,
+    })) ?? [];
+
+  const formattedPost = {
+    ...post,
+    author: post.author.id,
+  };
+
+  const newPost: PostResponse = {
+    ...formattedPost,
+    comments: [
+      ...previousComments.filter(comment => comment.id !== commentId)
+    ]
+  };
+
+  const response = await api.patch<PostResponse>(
+    `posts/${post.id}`,
+    newPost,
+  );
 
   return response.data;
 };
@@ -86,6 +121,17 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     author: await (getUser(comment.author) as Promise<User>),
   });
 
+  const updateByPostResponse = async (postResponse: PostResponse) => {
+    const updatedPosts = await Promise.all(posts.map(async (post) => {
+      if (post.id !== postResponse.id) return post;
+
+      return await convertPostResponseToPost(postResponse);
+    }),
+  );
+
+  setPosts(updatedPosts);
+  }
+
   useEffect(() => {
     const fetchPosts = async () => {
       const postsResponse = await getPosts();
@@ -100,8 +146,20 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     fetchPosts();
   }, []);
 
+  const handleComment = async (data: CommentParams) => {
+    const postResponse = await postComment(data);
+
+    updateByPostResponse(postResponse);
+  };
+
+  const handleDeleteComment = async (post: Post, commentId: string) => {
+    const postResponse = await deleteComment(post, commentId);
+
+    updateByPostResponse(postResponse);
+  };
+
   return (
-    <PostsContext.Provider value={{ posts, comment: postComment }}>
+    <PostsContext.Provider value={{ posts, comment: handleComment, deleteComment: handleDeleteComment }}>
       {children}
     </PostsContext.Provider>
   );
