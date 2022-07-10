@@ -4,6 +4,7 @@ import { usePosts } from '../../../../hooks/usePosts';
 import { Comment, Post } from '../../../../models/Post';
 
 import { Avatar } from '../../../Avatar';
+import { DeleteComment } from '../../../Modals/DeleteComment';
 import styles from './styles.module.css';
 
 type CommentCardProps = {
@@ -29,10 +30,7 @@ export const CommentCard: React.FC<CommentCardProps> = ({ comment, post }) => {
             </h3>
 
             {isCommentMine && (
-              <Trash
-                cursor="pointer"
-                onClick={() => deleteComment(post, comment.id)}
-              />
+              <DeleteComment deleteRequest={() => deleteComment(post, comment.id)} />
             )}
           </div>
           <span className={styles.timePassed}>Cerca de 2h</span>
