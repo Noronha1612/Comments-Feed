@@ -1,4 +1,5 @@
 import { Post as IPost } from '../../models/Post';
+import { getTimePassed } from '../../utils/getTimePassed';
 import { Avatar } from '../Avatar';
 import { CommentForm } from './components/CommentForm';
 import { Comments } from './components/Comments';
@@ -9,6 +10,8 @@ type PostProps = {
 }
 
 export const Post: React.FC<PostProps> = ({ post }) => {
+  const timePassed = getTimePassed(new Date(post.createdAt));
+
   return (
     <section className={styles.postContainer}>
       <header className={styles.header}>
@@ -19,7 +22,13 @@ export const Post: React.FC<PostProps> = ({ post }) => {
           <span>{post.author.role}</span>
         </div>
 
-        <span>Publicado há 1h</span>
+        <time
+          dateTime={post.createdAt}
+          title={new Date(post.createdAt).toLocaleDateString()}
+        >
+          Publicado
+          {timePassed.now ? ' Agora' : ` há ${timePassed.value}${timePassed.suffix}`}
+        </time>
       </header>
 
       <p className={styles.content}>

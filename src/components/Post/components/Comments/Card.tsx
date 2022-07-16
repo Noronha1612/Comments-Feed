@@ -2,6 +2,7 @@ import { ThumbsUp, Trash } from 'phosphor-react';
 import { useAuth } from '../../../../hooks/useAuth';
 import { usePosts } from '../../../../hooks/usePosts';
 import { Comment, Post } from '../../../../models/Post';
+import { getTimePassed } from '../../../../utils/getTimePassed';
 
 import { Avatar } from '../../../Avatar';
 import { DeleteComment } from '../../../Modals/DeleteComment';
@@ -15,6 +16,8 @@ type CommentCardProps = {
 export const CommentCard: React.FC<CommentCardProps> = ({ comment, post }) => {
   const { user } = useAuth();
   const { deleteComment } = usePosts();
+
+  const timePassed = getTimePassed(new Date(comment.createdAt));
 
   const isCommentMine = comment.author.id === user?.id;
 
@@ -33,7 +36,13 @@ export const CommentCard: React.FC<CommentCardProps> = ({ comment, post }) => {
               <DeleteComment deleteRequest={() => deleteComment(post, comment.id)} />
             )}
           </div>
-          <span className={styles.timePassed}>Cerca de 2h</span>
+          <time
+            dateTime={comment.createdAt}
+            title={new Date(comment.createdAt).toLocaleDateString()}
+            className={styles.timePassed}
+          >
+            {timePassed?.now ? 'Agora' : `Cerca de ${timePassed.value}${timePassed.suffix}`}
+          </time>
 
           <p>{comment.content}</p>
         </section>
